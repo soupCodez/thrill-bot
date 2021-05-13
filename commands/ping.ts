@@ -1,7 +1,7 @@
-import {runEvent} from "../index";
+import { runEvent } from "../index";
 
-export function run(e:runEvent) {
-    e.message.reply(`Pong! Current ping is ${e.client.ping}`);
+export function run(e: runEvent) {
+  e.message.reply(`Pong! Current ping is ${Math.round(e.client.ping)}`);
 }
 
-export const names = ["ping"];
+export const names = ["ping", "delay", "ms", "pong"];
