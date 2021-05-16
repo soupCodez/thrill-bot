@@ -16,6 +16,7 @@ const discord_js_1 = require("discord.js");
 const dotenv_1 = __importDefault(require("dotenv"));
 const fs_1 = require("fs");
 const config_1 = __importDefault(require("./config"));
+const { token } = require("./token.json");
 dotenv_1.default.config();
 const dev = process.env.NODE_ENV === "dev", client = new discord_js_1.Client(), commands = new discord_js_1.Collection();
 fs_1.readdir("./commands/", (err, allFiles) => {
@@ -80,9 +81,9 @@ client.on("raw", (packet) => {
         }
     });
 });
-if (process.env.TOKEN)
-    client.login(process.env.TOKEN);
+if (token)
+    client.login(token);
 else {
-    console.log("Create a file called .env and put your bot's token in there.");
+    console.log("Create a file called token.json and add a property with your bot's token in there.");
     process.exit(1);
 }

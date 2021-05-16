@@ -2,6 +2,7 @@ import { Client, Collection, Message, TextChannel } from "discord.js";
 import dotenv from "dotenv";
 import { readdir } from "fs";
 import config from "./config";
+const { token } = require("./token.json");
 
 export interface runEvent {
   message: Message;
@@ -108,8 +109,8 @@ client.on(
   }
 );
 
-if (process.env.TOKEN) client.login(process.env.TOKEN);
+if (token) client.login(token);
 else {
-  console.log("Create a file called .env and put your bot's token in there.");
+  console.log("Create a file called token.json and add a property with your bot's token in there.");
   process.exit(1);
 }
