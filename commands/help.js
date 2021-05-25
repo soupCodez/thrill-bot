@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.names = exports.run = void 0;
 const fs_1 = require("fs");
 function run(e) {
     let help;
