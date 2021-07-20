@@ -2,7 +2,16 @@ import { Client, Collection, Message, TextChannel } from "discord.js";
 import dotenv from "dotenv";
 import { readdir } from "fs";
 import config from "./config";
-const { token } = require("./token.json");
+import { MongoClient } from "mongodb";
+const { token, dbUri } = require("./token.json");
+
+const dbClient = new MongoClient(dbUri);
+
+try {
+  await dbClient.connect();
+} catch (e) {
+  console.error(e);
+}
 
 export interface runEvent {
   message: Message;
@@ -19,9 +28,7 @@ const dev = process.env.NODE_ENV === "dev",
 
 readdir("./commands/", (err, allFiles) => {
   if (err) console.log(err);
-  let files = allFiles.filter(
-    (f) => f.split(".").pop() === ("js")
-  );
+  let files = allFiles.filter((f) => f.split(".").pop() === "js");
   if (files.length <= 0) console.log("No commands found!");
   else
     for (let file of files) {
@@ -111,6 +118,8 @@ client.on(
 
 if (token) client.login(token);
 else {
-  console.log("Create a file called token.json and add a property with your bot's token in there.");
+  console.log(
+    "Create a file called token.json and add a property with your bot's token in there."
+  );
   process.exit(1);
 }

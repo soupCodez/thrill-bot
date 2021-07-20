@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "module": "commonjs",
+    "target": "es2017",
+    "module": "esnext",
     "strict": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "watch": true
+    "watch": true,
+    "moduleResolution": "node"
   },
   "include": [
     "index.ts",

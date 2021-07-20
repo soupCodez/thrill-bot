@@ -33,7 +33,9 @@
     "typescript": "^3.7.4"
   },
   "dependencies": {
+    "@types/mongodb": "^3.6.16",
     "discord.js": "^11.5.1",
+    "mongodb": "^3.6.9",
     "pm2": "^4.5.6"
   }
 }
